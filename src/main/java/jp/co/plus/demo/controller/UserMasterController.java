@@ -49,7 +49,7 @@ public class UserMasterController {
 	// 編集ページを表示
 	@RequestMapping(params = "useredit", method = RequestMethod.POST)
 	public String edit(@ModelAttribute EditUserForm editUserForm, Model model) {
-		System.out.println("userEdit");
+		System.out.println("editUser");
 
 		// Formにユーザー名をセット
 		editUserForm.setUserName(userMasterService.getUserName());
