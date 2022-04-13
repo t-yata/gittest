@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plus.demo.mapper.UserMasterMapper">
+
+	<select id="updateCount" resultType="int"
+		parameterType="jp.co.plus.demo.dto.EditUserDTO">	
+		SELECT
+		update_count
+		FROM
+		login_mst
+		WHERE
+		LOG_ID = #{log_id}
+	</select>
+
+	<update id="updatePassword"
+		parameterType="jp.co.plus.demo.dto.EditUserDTO">
+		UPDATE
+			login_mst
+		SET
+			update_date=current_timestamp,
+			update_count = (
+				case when update_count = 9999 then 1
+				else update_count + 1 end
+			),
+			password=#{password}
+		WHERE
+			LOG_ID = #{log_id}
+			AND update_count = #{update_count}
+	</update>
+
+	<select id="userlist" resultType="jp.co.plus.demo.dto.UserListDTO"
+		parameterType="jp.co.plus.demo.dto.UserListDTO">
+		SELECT
+			log_id, 
+			password,
+			create_date,
+			update_date
+		FROM
+			login_mst
+		ORDER BY log_id
+		LIMIT #{userListLimit};
+	</select>
+	
+	<select id="paging" resultType="jp.co.plus.demo.dto.UserListDTO"
+		parameterType="jp.co.plus.demo.dto.UserListDTO">
+		SELECT
+			log_id, 
+			password,
+			create_date,
+			update_date
+		FROM
+			login_mst
+		ORDER BY log_id
+		LIMIT #{userListLimit} OFFSET #{pagingCount};
+	</select>
+	
+
+
+</mapper>

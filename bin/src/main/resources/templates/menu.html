@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>menu</title>
+</head>
+<body>
+	<h1 th:text="#{menu.label.title}"></h1>
+	<span th:text="#{menu.label.loginUser}"></span><span th:text="${username}" ></span>
+	<form th:action="@{/usermaster}" method="post">
+		<input type="submit" name="useredit" th:value="#{menu.label.editUser}" />
+		<input type="submit" name="mfa" th:value="#{menu.label.mfaRegister}" />
+		<input type="submit" name="userlist" th:value="#{menu.label.userList}" />
+	</form>
+	<form th:action="@{/logout}" method="post">
+    	<button th:text="#{menu.label.logout}"></button>
+    </form>
+</body>
+</html>

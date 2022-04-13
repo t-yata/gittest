@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hello</title>
+</head>
+<body>
+
+    <form th:action="@{/regist}" method="post">
+	    <h1>ログイン成功</h1>
+	    <h2><span th:text="${username}" ></span> さんHello!!!!</h2>
+	    <h6>多要素認証 (MFA) の登録</h6>
+	    <h6>以下のQRコードを読み取り、アプリより表示されたコードを入力しMFA登録を押下してください。</h6>
+	    <img th:src="|data:image/png;base64,${dataUrl}|" />
+	    <br/>
+        <input type="text" name="totpkey" placeholder="please enter mfa code." /><span th:text="${msg}"></span>
+        <button type="submit" name="submit" value="mfaregist" >MFA登録</button>
+    </form>
+
+	<br/>
+    <form th:action="@{/logout}" method="post">
+    <button>Logout</button>
+    </form>
+
+</body>
+</html>

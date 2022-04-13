@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{mfa.label.title}"></title>
+</head>
+<body>
+	<h1 th:text="#{mfa.label.title}"></h1>
+	<form th:action="@{/regist}" method="post">
+
+		<p th:text="#{mfa.label.text}"></p>
+		<img th:src="|data:image/png;base64,${dataUrl}|" /> <br /> <input
+			type="text" name="totpkey" placeholder="please enter mfa code." /><span
+			th:text="${msg}"></span>
+		<button type="submit" name="submit" th:text="#{mfa.label.register}"></button>
+	</form>
+	<form th:action="@{/cancel}" method="post">
+		<button type="submit" name="submit" th:text="#{mfa.label.unregister}"></button>
+	</form>
+
+	<form th:action="@{/usermaster}" method="post">
+		<button name="back" th:text="#{mfa.label.menu}"></button>
+	</form>
+
+</body>
+</html>

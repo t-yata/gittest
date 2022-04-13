@@ -1,0 +1,6 @@
+@charset "UTF-8";
+ul {
+  list-style-type: none;
+  padding: 0; /* 左にできる隙間を消す */
+  color: red;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>UserInformationList</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="/js/common.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+	<h1 th:text="#{userList.label.title}"></h1>
+
+	<form th:action="@{/usermaster}" method="post" name="Login_Form" th:object="${userListForm}">
+
+		<table border="1" style="border-collapse: collapse">
+			<thead>
+				<tr>
+					<th th:text="#{userList.label.userName}"></th>
+					<th th:text="#{userList.label.password}"></th>
+					<th th:text="#{userList.label.createDate}"></th>
+					<th th:text="#{userList.label.updateData}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="result:*{userList}">
+
+					<td th:text="${result.userName}"></td>
+					<td th:text="${result.password}"></td>
+					<td th:text="${result.createDate}"></td>
+					<td th:text="${result.updateDate}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<input type="hidden" name="pagingCount" th:field="*{pagingCount}" />
+		<input type="hidden" name="backPageCheck" id = "backPageCheck" th:field="*{backPageCheck}" />
+		<input type="hidden" name="nextPageCheck" id = "nextPageCheck"th:field="*{nextPageCheck}" />
+		<button name="pagingBack" id="pagingBack" th:text="#{userList.label.back}"/></button>
+		<button name="pagingNext" id="pagingNext" th:text="#{userList.label.next}"/></button>
+		<button name="back" th:text="#{userList.label.menu}"></button>
+	</form>
+</body>
+</html>
