@@ -72,7 +72,7 @@ public class UserMasterController {
 
 		// エラーがあった場合は編集画面にメッセージをセットして遷移
 		if (result != null && result.getErrorCount() > 0) {
-			System.out.println("err");
+			System.out.println("Err");
 
 			return "useredit";
 		} else {
