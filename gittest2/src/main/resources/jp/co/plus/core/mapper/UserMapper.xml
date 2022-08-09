@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.plus.core.mapper.UserMapper">
+
+	<select id="findByUsername" resultType="jp.co.plus.core.dto.UserBean"
+		parameterType="jp.co.plus.core.dto.UserBean">
+		SELECT
+			log_id as username,
+			password, 
+			secret_key as secret
+		FROM
+			login_mst
+		WHERE
+			<bind name="username" value="username" />
+			LOG_ID = #{username}
+	</select>
+	
+	<update id="updateSecret"
+		parameterType="jp.co.plus.core.dto.UserBean">
+		UPDATE
+			login_mst
+		SET
+			<bind name="secret" value="secret" />
+			secret_key=#{secret}
+		WHERE
+		<bind name="username" value="username" />
+			LOG_ID = #{username}
+	</update>
+
+</mapper>

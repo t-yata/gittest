@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>MFA登録・解除</title>
+</head>
+<body>
+	<h1>MFA解除</h1>
+
+	<p>二段階認証を解除する場合はこちら。</p>
+	<form th:action="@{/cancel}" method="post">
+		<button type="submit" name="submit" value="mfacancel">MFA解除</button>
+	</form>
+
+	<form th:action="@{/usermaster}" method="post">
+		<input type="submit" name="back" value="メニューに戻る" />
+	</form>
+
+</body>
+</html>

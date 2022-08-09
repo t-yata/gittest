@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>login</title>
+</head>
+<body>
+
+
+	<div class="wrapper">
+		<div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null">
+			last exception: <span
+				th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></span>
+		</div>
+		<form th:action="@{/login}" method="post" name="Login_Form"
+			class="form-signin">
+			<h2 class="form-signin-heading" th:text="#{login.label.title}"></h2>
+
+			<hr class="colorgraph">
+			<table>
+				<tbody>
+					<tr>
+						<td th:text="#{login.label.user}"></td>
+						<td><input type="text" name="username" placeholder="username" /></td>
+					</tr>
+					<tr>
+						<td th:text="#{login.label.password}"></td>
+						<td><input type="password" name="password"
+							placeholder="password" /></td>
+					</tr>
+					<tr>
+						<td th:text="#{login.label.mfa}"></td>
+						<td><input type="text" name="totpkey"
+							placeholder="please enter mfa code." /></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<button type="submit" th:text="#{login.label.login}" value="Login"></button>
+		</form>
+		<br>
+	</div>
+</body>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ユーザー情報更新</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<h1 th:text="#{editUser.label.title}"></h1>
+
+	<form th:action="@{/usermaster}" method="post" th:object="${editUserForm}">
+		<div>
+			<ul>
+				<li th:each="error : ${#fields.detailedErrors()}">
+					<span th:text="${error.message}">Error message</span>
+				</li>
+			</ul>
+		</div>
+		<table>
+			<tbody>
+				<tr>
+					<td th:text="#{editUser.label.user}"></td>
+					<td>
+						<input type="text" name="userName" th:field="*{userName}" />
+					</td>
+				</tr>
+				<tr>
+					<td th:text="#{editUser.label.password}"></td>
+					<td>
+						<input type="password" name="password" />
+					</td>
+				</tr>
+				<tr>
+					<td th:text="#{editUser.label.rePassword}"></td>
+					<td><input type="password" name="re_password" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="hidden" name="updateCount" th:field="*{updateCount}">
+		<button name="editUser" th:text="#{editUser.label.update}"></button>
+		<button name="back" th:text="#{mfa.label.menu}"></button>
+
+	</form>
+
+</body>
+
+</html>

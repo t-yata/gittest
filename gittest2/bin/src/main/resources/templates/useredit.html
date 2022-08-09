@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー情報更新</title>
+</head>
+<body>
+
+	<h1 th:text="#{editUser.label.title}"></h1>
+
+	<form th:action="@{/usermaster}" method="post">
+		<div>
+			<ul style = "list-style: none;color: red;">
+				<li th:text="${errormessage}"></li>
+			</ul>
+		</div>
+		<table>
+			<tbody>
+				<tr>
+					<td th:text="#{editUser.label.user}"></td>
+					<td><input type="text" name="userName" th:value="${userName}" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{editUser.label.password}"></td>
+					<td><input type="password" name="password" /></td>
+				</tr>
+				<tr>
+					<td th:text="#{editUser.label.rePassword}"></td>
+					<td><input type="password" name="re_password" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="hidden" name="updateCount" th:value="${updateCount}">
+		<input type="submit" name="editUser" th:value="#{editUser.label.update}" /> <input
+			type="submit" name="back" th:value="#{editUser.label.backMenu}" />
+
+	</form>
+
+</body>
+</html>

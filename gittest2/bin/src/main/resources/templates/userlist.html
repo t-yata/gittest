@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>UserInformationList</title>
+</head>
+<body>
+
+	<h1 th:text="#{userList.label.title}"></h1>
+
+	<form th:action="@{/usermaster}" method="post" name="Login_Form">
+
+		<table border="1" style="border-collapse: collapse">
+			<thead>
+				<tr>
+					<th th:text="#{userList.label.userName}"></th>
+					<th th:text="#{userList.label.password}"></th>
+					<th th:text="#{userList.label.createDate}"></th>
+					<th th:text="#{userList.label.updateData}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="result:${result}">
+
+					<td th:text="${result.userName}"></td>
+					<td th:text="${result.password}"></td>
+					<td th:text="${result.createDate}"></td>
+					<td th:text="${result.updateDate}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<input type="hidden" name="pagingCount" th:value = "${pagingCount}"/>
+		<input type="submit" name="pagingBack" th:value="#{userList.label.back}" />
+		<input type="submit" name="pagingNext" th:value="#{userList.label.next}" />
+		<input type="submit" name="back" th:value="#{userList.label.menu}" />
+	</form>
+
+
+</body>
+</html>
